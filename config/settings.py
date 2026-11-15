@@ -5,8 +5,14 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', 'dev-only-change-this-secret-key')
 DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'
-ALLOWED_HOSTS = [h.strip() for h in os.getenv('ALLOWED_HOSTS', '.railway.app,localhost,127.0.0.1').split(',') if h.strip()]
-CSRF_TRUSTED_ORIGINS = [u.strip() for u in os.getenv('CSRF_TRUSTED_ORIGINS', '').split(',') if u.strip()]
+ALLOWED_HOSTS = [h.strip() for h in os.getenv(
+    'ALLOWED_HOSTS',
+    '.railway.app,digitalimagingltd.com,www.digitalimagingltd.com,localhost,127.0.0.1',
+).split(',') if h.strip()]
+CSRF_TRUSTED_ORIGINS = [u.strip() for u in os.getenv(
+    'CSRF_TRUSTED_ORIGINS',
+    'https://digitalimagingltd.com,https://www.digitalimagingltd.com',
+).split(',') if u.strip()]
 
 INSTALLED_APPS = [
     'django.contrib.admin', 'django.contrib.auth', 'django.contrib.contenttypes',
